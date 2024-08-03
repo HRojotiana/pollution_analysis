@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from extraction.extract import extract_func
+import datetime
 
 
 def convert_to_df(lat, long, city):
@@ -17,10 +18,12 @@ def convert_to_df(lat, long, city):
     return [aqi_df, pollutants_df, city]
 
 
-def get_pollutions_city_info(lat, long, city):
-    dfs = convert_to_df(lat, long, city)
+def get_pollutions_city_info(lat, long, location):
+    dfs = convert_to_df(lat, long, location)
     df = pd.concat([dfs[0], dfs[1]], axis=1)
-    df['City'] = city
+    df['Location'] = location
+    df['Date'] = pd.Timestamp.now()
+
     return df
 
 
