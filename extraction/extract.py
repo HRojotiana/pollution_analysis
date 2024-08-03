@@ -1,5 +1,6 @@
 import os
 import requests
+import pandas as pd
 
 
 #Extract data from OpenWeather
@@ -14,3 +15,7 @@ def extract_func(lat, long, city_name):
     poll_data = data.get('list')[0].get('components') #pick data for pollutants
 
     return [aqi_data, poll_data, city_name]
+
+def extract_local_file(file):
+    df = pd.read_csv(file)
+    return df
