@@ -9,3 +9,6 @@ def load_pollutions():
 def load_demographic_and_pollutions():
     data_list = merge_with_demographic_datas()
     return save_to_csv_format(data_list, 'pollutions_and_demographic')
+def load_geographic_and_pollutions():
+    data_list = merge_with_geographic_datas()
+    return save_to_csv_format(data_list, 'pollutions_and_demographic')
