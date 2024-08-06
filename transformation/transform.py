@@ -17,12 +17,11 @@ def convert_to_df(lat, long, city):
     pollutants_df = pd.DataFrame.from_dict(pollutants)
     return [aqi_df, pollutants_df, city]
 
-
 def get_pollutions_city_info(lat, long, location):
     dfs = convert_to_df(lat, long, location)
     df = pd.concat([dfs[0], dfs[1]], axis=1)
     df['Location'] = location
-    df['Date'] = pd.Timestamp.now()
+    df['Date'] = pd.Timestamp.now().date()
 
     return df
 
