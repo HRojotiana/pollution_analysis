@@ -30,3 +30,7 @@ def get_pollutions_city_info(lat, long, location):
 def get_all_pollutions_infos(all_infos):
     df = pd.concat(all_infos, axis=0, ignore_index=True)
     return df
+
+def merge_data_table(datas_to_be_merged, all_infos):
+    pollution_df = get_all_pollutions_infos(all_infos)
+    return pd.merge(pollution_df, datas_to_be_merged, how='inner', on=["Location"])
