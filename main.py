@@ -1,3 +1,7 @@
-from extraction.extract_pollution_data import extract_antananarivo_pollution
+from transformation.transform_pollutions import merge_with_demographic_datas, merge_with_geographic_datas
+from transformation.transform import get_all_pollutions_infos
+from extraction.extract_local_file import extract_from_demographic_files
+from loading.load_data import  load_demographic_and_pollutions_in_database, load_geographic_and_pollutions_in_database
 
-print(extract_antananarivo_pollution())
+load_demographic_and_pollutions_in_database()
+load_geographic_and_pollutions_in_database()

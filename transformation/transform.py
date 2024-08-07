@@ -17,12 +17,11 @@ def convert_to_df(lat, long, city):
     pollutants_df = pd.DataFrame.from_dict(pollutants)
     return [aqi_df, pollutants_df, city]
 
-
 def get_pollutions_city_info(lat, long, location):
     dfs = convert_to_df(lat, long, location)
     df = pd.concat([dfs[0], dfs[1]], axis=1)
     df['Location'] = location
-    df['Date'] = pd.Timestamp.now()
+    df['Date'] = pd.Timestamp.now().date()
 
     return df
 
@@ -31,6 +30,5 @@ def get_all_pollutions_infos(all_infos):
     df = pd.concat(all_infos, axis=0, ignore_index=True)
     return df
 
-def merge_data_table(datas_to_be_merged, all_infos):
-    pollution_df = get_all_pollutions_infos(all_infos)
-    return pd.merge(pollution_df, datas_to_be_merged, how='inner', on=["Location"])
+def merge_data_tables(datas_to_be_merged, pollution_datas):
+    return pd.merge(pollution_datas, datas_to_be_merged, how='inner', on=["Location"])
