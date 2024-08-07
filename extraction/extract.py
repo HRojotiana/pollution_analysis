@@ -19,5 +19,7 @@ def extract_func(lat, long, city_name):
     return [aqi_data, poll_data, city_name]
 
 def extract_local_file(file):
-    df = pd.read_csv(file)
+    load_dotenv()
+    file_path = os.getenv('FILE_PATH')
+    df = pd.read_csv(f'{file_path}/{file}')
     return df
