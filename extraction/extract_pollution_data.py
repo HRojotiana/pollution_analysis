@@ -1,4 +1,4 @@
-from extraction.extract import extract_func
+from extraction.extract import extract_func, extract_historical
 
 
 def extract_antananarivo_pollution():
