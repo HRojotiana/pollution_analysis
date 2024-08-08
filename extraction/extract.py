@@ -29,7 +29,7 @@ def extract_local_file(file):
 #Extract historical datas from openWeather
 def extract_historical(lat, long, city_name, start, end):
     load_dotenv()
-    #converting start date and end date to utc
+    #converting start date and end date to epoch date
     start_date = timestamp_to_epoch(start)
     end_date = timestamp_to_epoch(end)
     api_key = os.getenv('API_KEY')

@@ -1,22 +1,24 @@
-from extraction.extract import extract_func, extract_historical
+from extraction.extract import extract_func
+from utils.coordinates.latitudes import antananarivo_lat, losangeles_lat, lima_lat, nairobi_lat, paris_lat, tokyo_lat 
+from utils.coordinates.longitudes import antananarivo_long, losangeles_long, lima_long, nairobi_long, paris_long, tokyo_long
 
 
 def extract_antananarivo_pollution():
-    return extract_func(-18.917236014381977, 47.50290091278251, 'Antananarivo')
+    return extract_func(antananarivo_lat(), antananarivo_long(), 'Antananarivo')
 
 
 def extract_losangeles_pollution():
-    return extract_func(34.05190409686144, -118.28821070970466, 'Los Angeles')
+    return extract_func(losangeles_lat(), losangeles_long(), 'Los Angeles')
     
 
 def extract_paris_pollution():
-    return extract_func(48.8563407798188, 2.3521811013503524, 'Paris')
+    return extract_func(paris_lat(), paris_long(), 'Paris')
 
 def extract_tokyo_pollution():
-    return extract_func(35.75209666774653, 139.88399891217742, 'Tokyo')
+    return extract_func(tokyo_lat(), tokyo_long(), 'Tokyo')
 
 def extract_nairobi_pollution():
-    extract_func(-1.287414704038564, 36.828835485270105, 'Nairobi')
+    extract_func(nairobi_lat(), nairobi_long(), 'Nairobi')
 
 def extract_lima_pollution():
-    return extract_func(-12.046591322815443, -77.0537829431234, 'Lima')
+    return extract_func(lima_lat(), lima_long(), 'Lima')
