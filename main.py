@@ -1,3 +1,3 @@
-from extraction.extract_pollution_data import extract_lima_pollution
+from transformation.transform_pollutions import merge_with_geographic_datas
 
-print(extract_lima_pollution())
+print(merge_with_geographic_datas())
