@@ -37,4 +37,4 @@ def manual_load_with_geographic(date):
 
 def manual_load_all_datas(date):
     data_list = hist_merge_all_datas(date)
-    load_to_database(data_list, 'pollutions')
+    load_to_database(data_list, 'air_pollutions')
