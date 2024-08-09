@@ -1,3 +1,3 @@
-from extraction.extract import extract_from_database
+from extraction.extract_pollution_data import extract_geographic_pollution, extract_demographic_pollution
 
-print(extract_from_database('demographic_pollution_datas'))
+print(extract_geographic_pollution())
