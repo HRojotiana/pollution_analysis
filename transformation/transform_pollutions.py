@@ -5,6 +5,7 @@ import pandas as pd
 from utils.coordinates.latitudes import antananarivo_lat, losangeles_lat, lima_lat, nairobi_lat, paris_lat, tokyo_lat 
 from utils.coordinates.longitudes import antananarivo_long, losangeles_long, lima_long, nairobi_long, paris_long, tokyo_long
 from extraction.extract_pollution_data import extract_geographic_pollution, extract_demographic_pollution
+from extraction.extract import extract_from_database
 
 def get_antananarivo_pollutions_info():
     return get_pollutions_city_info(antananarivo_lat(), antananarivo_long(), 'Antananarivo')
@@ -72,3 +73,8 @@ def hist_merge_all_datas(date):
     merged_datas = merge_demographic_and_geographic_datas()
     pollutions_datas =all_historical_datas(date)
     return merge_data_tables(merged_datas, pollutions_datas)
+
+#creating aqi table
+def aqi_info_per_location():
+    df = extract_from_database("air_pollutions").groupby('Location')['aqi'].describe()
+    return df

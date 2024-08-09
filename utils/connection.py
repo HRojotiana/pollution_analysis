@@ -9,5 +9,4 @@ def db_connect():
     load_dotenv()
     connection_url = os.getenv('DB_URL')
     engine = create_engine(connection_url)
-    print("Connection successful!")
     return engine

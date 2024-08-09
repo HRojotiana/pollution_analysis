@@ -1,5 +1,5 @@
-from loading.load import save_to_csv_format, load_to_database
-from transformation.transform_pollutions import get_all_pollutions_infos, merge_with_geographic_datas, merge_with_demographic_datas, hist_merge_with_demographic_datas, hist_merge_with_geographic_datas, merge_all_datas, hist_merge_all_datas
+from loading.load import save_to_csv_format, load_to_database, load_to_database_replace
+from transformation.transform_pollutions import get_all_pollutions_infos, merge_with_geographic_datas, merge_with_demographic_datas, hist_merge_with_demographic_datas, hist_merge_with_geographic_datas, merge_all_datas, hist_merge_all_datas, aqi_info_per_location
 
 
 def load_pollutions():
@@ -38,3 +38,8 @@ def manual_load_with_geographic(date):
 def manual_load_all_datas(date):
     data_list = hist_merge_all_datas(date)
     load_to_database(data_list, 'air_pollutions')
+
+#Load aqi informations per location*
+def aqi_per_location():
+    data_list = aqi_info_per_location()
+    load_to_database_replace(data_list, "aqis")
