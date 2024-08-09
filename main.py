@@ -1,4 +1,3 @@
-from utils.connection import db_connect
-from loading.load_data import load_demographic_and_pollutions_in_database
+from extraction.extract import extract_from_database
 
-load_demographic_and_pollutions_in_database()
+print(extract_from_database('demographic_pollution_datas'))
