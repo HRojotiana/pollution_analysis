@@ -47,13 +47,13 @@ def merge_with_geographic_datas():
     pollutions_datas = get_all_pollutions_data()
     return merge_data_tables(geographic_datas, pollutions_datas)
 
-#Concatenate with historical datas
-def all_with_demographic_datas(date):
+#Merge historical datas with demographic and geographic datas
+def hist_merge_with_demographic_datas(date):
     demographic_datas = extract_from_demographic_files()
-    pollutions_datas = concat_with_historical_datas(date)
+    pollutions_datas = all_historical_datas(date)
     return merge_data_tables(demographic_datas, pollutions_datas)
 
-def all_with_geographic_datas(date):
+def hist_merge_with_geographic_datas(date):
     geographic_datas = extract_from_geographic_file()
-    pollutions_datas = concat_with_historical_datas(date)
+    pollutions_datas = all_historical_datas(date)
     return merge_data_tables(geographic_datas, pollutions_datas)

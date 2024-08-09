@@ -26,3 +26,4 @@ def load_to_database(df, table_name):
     end_time = time.time()
     total_time = end_time - start_time
     print(f'Insert time: {total_time} seconds')
+    print(f'Saved in {table_name}')
