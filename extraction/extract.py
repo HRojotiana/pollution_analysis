@@ -3,6 +3,8 @@ import os
 import requests
 import pandas as pd
 from utils.convertion import timestamp_to_epoch
+import psycopg2
+from utils.connection import db_connect
 
 
 #Extract data from OpenWeather
@@ -49,3 +51,8 @@ def extract_historical(lat, long, city_name, start, end):
         dates.append(data['dt']) 
 
     return [aqis, pollutants, dates, city_name]
+
+def extract_from_database(table_name):
+    engine = db_connect()
+    df = pd.read_sql(table_name, con=engine)
+    return df

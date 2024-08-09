@@ -1,4 +1,4 @@
-from extraction.extract import extract_func
+from extraction.extract import extract_func, extract_from_database
 from utils.coordinates.latitudes import antananarivo_lat, losangeles_lat, lima_lat, nairobi_lat, paris_lat, tokyo_lat 
 from utils.coordinates.longitudes import antananarivo_long, losangeles_long, lima_long, nairobi_long, paris_long, tokyo_long
 
@@ -22,3 +22,12 @@ def extract_nairobi_pollution():
 
 def extract_lima_pollution():
     return extract_func(lima_lat(), lima_long(), 'Lima')
+
+def extract_demographic_pollution():
+    return extract_from_database('demographic_pollution_datas')
+
+def extract_geographic_pollution():
+    return extract_from_database('geographic_pollution_datas')
+
+def aqis_datas():
+    return extract_from_database('aqis')

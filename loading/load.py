@@ -26,3 +26,22 @@ def load_to_database(df, table_name):
     end_time = time.time()
     total_time = end_time - start_time
     print(f'Insert time: {total_time} seconds')
+    print(f'Saved in {table_name}')
+
+def load_to_database_replace(df, table_name):
+    load_dotenv()
+    connection_url = os.getenv('DB_URL')
+    engine = create_engine(connection_url)
+    start_time = time.time()
+
+    df.to_sql(
+        name=table_name,
+        con=engine,
+        if_exists="replace",
+        index=True
+    )
+
+    end_time = time.time()
+    total_time = end_time - start_time
+    print(f'Insert time: {total_time} seconds')
+    print(f'Saved in {table_name}')
