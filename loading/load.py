@@ -4,6 +4,7 @@ import os
 import psycopg2  
 from sqlalchemy import create_engine 
 import time
+from utils.connection import db_connect
 
 
 def save_to_csv_format(df, file_name):
@@ -11,9 +12,7 @@ def save_to_csv_format(df, file_name):
     print(f'{file_name} created in csv format')
 
 def load_to_database(df, table_name):
-    load_dotenv()
-    connection_url = os.getenv('DB_URL')
-    engine = create_engine(connection_url)
+    engine = db_connect()
     start_time = time.time()
 
     df.to_sql(

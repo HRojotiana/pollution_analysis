@@ -3,6 +3,7 @@ import os
 import requests
 import pandas as pd
 from utils.convertion import timestamp_to_epoch
+import psycopg2
 
 
 #Extract data from OpenWeather

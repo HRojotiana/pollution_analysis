@@ -54,3 +54,5 @@ def get_all_pollutions_infos(all_infos):
 #Merge pollution datas to other datas information about cities
 def merge_data_tables(datas_to_be_merged, pollution_datas):
     return pd.merge(pollution_datas, datas_to_be_merged, how='inner', on=["Location"])
+
+#Removing duplicated values

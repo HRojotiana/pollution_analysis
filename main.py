@@ -1,3 +1,4 @@
-from transformation.transform_pollutions import merge_with_geographic_datas
+from utils.connection import db_connect
+from loading.load_data import load_demographic_and_pollutions_in_database
 
-print(merge_with_geographic_datas())
+load_demographic_and_pollutions_in_database()
