@@ -28,3 +28,6 @@ def extract_demographic_pollution():
 
 def extract_geographic_pollution():
     return extract_from_database('geographic_pollution_datas')
+
+def aqis_datas():
+    return extract_from_database('aqis')

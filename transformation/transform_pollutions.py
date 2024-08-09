@@ -76,5 +76,10 @@ def hist_merge_all_datas(date):
 
 #creating aqi table
 def aqi_info_per_location():
-    df = extract_from_database("air_pollutions").groupby('Location')['aqi'].describe()
-    return df
+    df = extract_from_database("air_pollutions")
+    aqi_df = df.groupby('Location')['aqi'].describe()
+    density_df = df.groupby('Location')['Density (people/km²)'].mean()
+    population_df = df.groupby('Location')['Population'].mean()
+    merged_df = pd.merge(aqi_df, density_df, on='Location', how='inner')
+    merged_with_pop = pd.merge(merged_df, population_df, on='Location', how='inner')
+    return merged_with_pop
