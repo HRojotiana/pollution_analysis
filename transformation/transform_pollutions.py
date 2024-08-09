@@ -47,6 +47,16 @@ def merge_with_geographic_datas():
     pollutions_datas = get_all_pollutions_data()
     return merge_data_tables(geographic_datas, pollutions_datas)
 
+def merge_demographic_and_geographic_datas():
+    demographic_datas = extract_from_demographic_files()
+    geographic_datas = extract_from_geographic_file()
+    return merge_data_tables(demographic_datas, geographic_datas)
+
+def merge_all_datas():
+    merged_datas = merge_demographic_and_geographic_datas()
+    pollutions_datas = get_all_pollutions_data()
+    return merge_data_tables(merged_datas, pollutions_datas)
+
 #Merge historical datas with demographic and geographic datas
 def hist_merge_with_demographic_datas(date):
     demographic_datas = extract_from_demographic_files()
@@ -57,3 +67,8 @@ def hist_merge_with_geographic_datas(date):
     geographic_datas = extract_from_geographic_file()
     pollutions_datas = all_historical_datas(date)
     return merge_data_tables(geographic_datas, pollutions_datas)
+
+def hist_merge_all_datas(date):
+    merged_datas = merge_demographic_and_geographic_datas()
+    pollutions_datas =all_historical_datas(date)
+    return merge_data_tables(merged_datas, pollutions_datas)

@@ -5,7 +5,7 @@ from airflow.utils.dates import days_ago # type: ignore
 from extraction.extract_pollution_data import extract_antananarivo_pollution, extract_losangeles_pollution, extract_paris_pollution, extract_tokyo_pollution, extract_nairobi_pollution, extract_lima_pollution
 from extraction.extract_local_file import extract_from_demographic_files, extract_from_geographic_file
 from transformation.transform_pollutions import get_all_pollutions_data
-from loading.load_data import load_demographic_and_pollutions_in_database, load_geographic_and_pollutions_in_database
+from loading.load_data import load_demographic_and_pollutions_in_database, load_geographic_and_pollutions_in_database, load_all_datas
 
 default_args = {
     'owner': 'airflow',
@@ -90,5 +90,11 @@ load_geographic_and_pollutions = PythonOperator(
     python_callable=load_geographic_and_pollutions_in_database,
     dag=dag,
 )
+
+load_all = PythonOperator(
+    task_id='load_all',
+    python_callable=load_all_datas,
+    dag=dag,
+)
 # Set the task dependencies
-[extract_antananarivo_pollution, extract_losangeles_pollution, extract_paris_pollution, extract_tokyo_pollution, extract_nairobi_pollution, extract_lima_pollution, extract_from_demographic_files, extract_from_geographic_files] >>  transform_all >> [load_demographic_and_pollutions, load_geographic_and_pollutions]
+[extract_antananarivo_pollution, extract_losangeles_pollution, extract_paris_pollution, extract_tokyo_pollution, extract_nairobi_pollution, extract_lima_pollution, extract_from_demographic_files, extract_from_geographic_files] >>  transform_all >> [load_demographic_and_pollutions, load_geographic_and_pollutions, load_all]

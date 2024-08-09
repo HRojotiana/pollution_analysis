@@ -1,5 +1,6 @@
 from loading.load import save_to_csv_format, load_to_database
-from transformation.transform_pollutions import get_all_pollutions_infos, merge_with_geographic_datas, merge_with_demographic_datas, hist_merge_with_demographic_datas, hist_merge_with_geographic_datas
+from transformation.transform_pollutions import get_all_pollutions_infos, merge_with_geographic_datas, merge_with_demographic_datas, hist_merge_with_demographic_datas, hist_merge_with_geographic_datas, merge_all_datas, hist_merge_all_datas
+
 
 def load_pollutions():
     data_list = get_all_pollutions_infos()
@@ -21,6 +22,10 @@ def load_geographic_and_pollutions_in_database():
     data_list = merge_with_geographic_datas()
     load_to_database(data_list, 'geographic_pollution_datas')
 
+def load_all_datas():
+    data_list = merge_all_datas()
+    load_to_database(data_list, 'pollutions')
+
 #Load manually historical datas
 def manual_load_with_demographic(date):
     data_list = hist_merge_with_demographic_datas(date)
@@ -29,3 +34,7 @@ def manual_load_with_demographic(date):
 def manual_load_with_geographic(date):
     data_list = hist_merge_with_geographic_datas(date)
     load_to_database(data_list, 'geographic_pollution_datas')
+
+def manual_load_all_datas(date):
+    data_list = hist_merge_all_datas(date)
+    load_to_database(data_list, 'pollutions')
